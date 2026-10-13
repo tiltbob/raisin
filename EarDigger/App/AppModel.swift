@@ -11,7 +11,7 @@ final class AppModel: ObservableObject {
     /// How long to keep looking for the camera after joining: iOS takes a few seconds to
     /// associate and get an address, and the first packets fail until the user has answered
     /// the local-network question.
-    private static let findPatience: TimeInterval = 25
+    private nonisolated static let findPatience: TimeInterval = 25
     private static let debugTailLines = 12
 
     let link = NetworkLink()
