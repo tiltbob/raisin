@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  push:
+    branches: ["**"]
+    tags-ignore: ["v*"]
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  XCODEGEN_VERSION: "2.46.0"
+  XCODEGEN_SHA256: "4d9e34b62172d645eed6457cac13fc222569974098ef4ee9c3368bedf0196806"
+
+jobs:
+  kit-linux:
+    name: EarDiggerKit tests (Linux)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Swift version
+        run: swift --version
+
+      - name: Unit and loopback tests
+        run: swift test --package-path EarDiggerKit
+
+  ios:
+    name: Kit tests (macOS), project check and iOS build
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+
+      - name: EarDiggerKit tests
+        run: swift test --package-path EarDiggerKit
+
+      - name: Committed project matches project.yml
+        run: |
+          set -euo pipefail
+          curl -sSfL -o "$RUNNER_TEMP/xcodegen.zip" \
+            "https://github.com/yonaskolb/XcodeGen/releases/download/$XCODEGEN_VERSION/xcodegen.zip"
+          echo "$XCODEGEN_SHA256  $RUNNER_TEMP/xcodegen.zip" | shasum -a 256 -c -
+          unzip -q "$RUNNER_TEMP/xcodegen.zip" -d "$RUNNER_TEMP"
+          "$RUNNER_TEMP/xcodegen/bin/xcodegen" generate
+          if ! git diff --exit-code -- EarDigger.xcodeproj; then
+            echo "::error::EarDigger.xcodeproj is out of date: run 'xcodegen generate' (XcodeGen $XCODEGEN_VERSION) and commit the result"
+            exit 1
+          fi
+
+      - name: Build for the simulator
+        run: |
+          xcodebuild -project EarDigger.xcodeproj -scheme EarDigger -configuration Debug \
+            -destination 'generic/platform=iOS Simulator' -derivedDataPath build/sim \
+            CODE_SIGNING_ALLOWED=NO build
+
+      - name: Build for devices (unsigned)
+        run: |
+          set -euo pipefail
+          xcodebuild -project EarDigger.xcodeproj -scheme EarDigger -configuration Release \
+            -destination 'generic/platform=iOS' -derivedDataPath build/device \
+            CODE_SIGNING_ALLOWED=NO build
+          mkdir -p dist/Payload
+          cp -R build/device/Build/Products/Release-iphoneos/EarDigger.app dist/Payload/
+          (cd dist && zip -qr eardigger-unsigned.ipa Payload)
+
+      - name: Upload unsigned IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: eardigger-unsigned-ipa
+          path: dist/eardigger-unsigned.ipa
+          if-no-files-found: error

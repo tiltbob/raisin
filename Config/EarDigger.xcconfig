@@ -1,0 +1,13 @@
+// Build settings of the EarDigger app target. The release workflow overrides the two
+// version numbers from the git tag.
+MARKETING_VERSION = 0.1.0
+CURRENT_PROJECT_VERSION = 1
+
+PRODUCT_BUNDLE_IDENTIFIER = io.github.tiltbob.raisin
+CODE_SIGN_ENTITLEMENTS = EarDigger/Resources/EarDigger.entitlements
+CODE_SIGN_STYLE = Automatic
+DEVELOPMENT_TEAM =
+
+// Your own signing team, bundle id or entitlements: copy Local.xcconfig.example to
+// Local.xcconfig (git ignores it) and edit that.
+#include? "Local.xcconfig"

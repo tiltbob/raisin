@@ -1,0 +1,19 @@
+# Xcode
+build/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Your own signing settings (see Config/Local.xcconfig.example)
+Config/Local.xcconfig
+
+# Release output
+dist/
+*.ipa
+
+.DS_Store

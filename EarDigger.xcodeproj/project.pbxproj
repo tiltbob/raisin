@@ -1,0 +1,470 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A54EFF59CAB7B61476E66AD /* EarDiggerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78203D5EEB467B3C984538AF /* EarDiggerApp.swift */; };
+		188272B0400298C8AE5C210F /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A853554D683C5147AC0799DD /* Strings.swift */; };
+		191EC3A333BFE5785FE343EC /* NearbyRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E719714F98EDDE321AE9119 /* NearbyRow.swift */; };
+		34266FA08A6CE80A57AFBDAA /* ViewerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F064C7BCCB37A6F32BE71D92 /* ViewerModel.swift */; };
+		34DCD1C40066B82587DCDE4F /* Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AACB0FC75E6D3FA31EF7D4 /* Snapshots.swift */; };
+		378A0C6166F7DA9223F377F2 /* CrashRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E625F190F83C9B07FB5916 /* CrashRecord.swift */; };
+		4B892910454EA44B96904E62 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9CF9C4BB9022EF6777D9B43 /* Components.swift */; };
+		5B74DAB955DF6EED7C31833F /* DebugReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA469AE5C811CFAA20948E01 /* DebugReport.swift */; };
+		5EE639104B293B25C5B7F8D7 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFD5C6029BE1C00850BB49E5 /* CameraView.swift */; };
+		63C1B126A958CDA812CA1C71 /* NetworkLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B501D74052B6427995CE7372 /* NetworkLink.swift */; };
+		676334AC3CF206A113072CA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABBAEACF0EEDA0669096368E /* Assets.xcassets */; };
+		8845F31772741BBE1B5147A6 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82476365058738EE6A985D86 /* AppInfo.swift */; };
+		988F762592E8524774487E7F /* EarDiggerKit in Frameworks */ = {isa = PBXBuildFile; productRef = C989F9B00DFA8862F9CAC00B /* EarDiggerKit */; };
+		9ACF4F4FA1B4FAB6274DE1FB /* ShakeDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D512BA9F8D9EC7603FF85E /* ShakeDetector.swift */; };
+		B2CBD9098404C703A9F0627A /* NearbyScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5F8754712A55E7B65A8A5E /* NearbyScanner.swift */; };
+		C4784E4B6E6E2B9ECD9A6F37 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1602094275E9A327F9E6251 /* AppModel.swift */; };
+		F68B7A2275F7B5E4DBBFA6F3 /* ConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FC35959BA47948151E213 /* ConnectView.swift */; };
+		FFC5B5E080933B8216F94C67 /* ViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C445E8A719208E1ACBD94640 /* ViewerView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		044FC35959BA47948151E213 /* ConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectView.swift; sourceTree = "<group>"; };
+		0E719714F98EDDE321AE9119 /* NearbyRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyRow.swift; sourceTree = "<group>"; };
+		334404B19D089C4352E9A8E2 /* EarDigger.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = EarDigger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DB345AA974D3E57752DC273 /* EarDigger.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = EarDigger.xcconfig; sourceTree = "<group>"; };
+		78203D5EEB467B3C984538AF /* EarDiggerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarDiggerApp.swift; sourceTree = "<group>"; };
+		82476365058738EE6A985D86 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
+		A853554D683C5147AC0799DD /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		ABBAEACF0EEDA0669096368E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B501D74052B6427995CE7372 /* NetworkLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLink.swift; sourceTree = "<group>"; };
+		B9AACB0FC75E6D3FA31EF7D4 /* Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshots.swift; sourceTree = "<group>"; };
+		C3E625F190F83C9B07FB5916 /* CrashRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashRecord.swift; sourceTree = "<group>"; };
+		C445E8A719208E1ACBD94640 /* ViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewerView.swift; sourceTree = "<group>"; };
+		C8A34EF20B73770F3C211B00 /* EarDigger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EarDigger.entitlements; sourceTree = "<group>"; };
+		D1602094275E9A327F9E6251 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		DA469AE5C811CFAA20948E01 /* DebugReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugReport.swift; sourceTree = "<group>"; };
+		DFD5C6029BE1C00850BB49E5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		EE5F8754712A55E7B65A8A5E /* NearbyScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyScanner.swift; sourceTree = "<group>"; };
+		F064C7BCCB37A6F32BE71D92 /* ViewerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewerModel.swift; sourceTree = "<group>"; };
+		F6BE14064862C9343CB4C945 /* EarDiggerKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = EarDiggerKit; path = EarDiggerKit; sourceTree = SOURCE_ROOT; };
+		F8D512BA9F8D9EC7603FF85E /* ShakeDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeDetector.swift; sourceTree = "<group>"; };
+		F9CF9C4BB9022EF6777D9B43 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DAD5F35CE3CDF4C2150B7164 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				988F762592E8524774487E7F /* EarDiggerKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0BF599CCA76124C17CF8273B /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				4DB345AA974D3E57752DC273 /* EarDigger.xcconfig */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		4367BF4EEEBFF41E4602B771 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D1602094275E9A327F9E6251 /* AppModel.swift */,
+				78203D5EEB467B3C984538AF /* EarDiggerApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		501A88DA9011CA6E17EF1593 /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				C3E625F190F83C9B07FB5916 /* CrashRecord.swift */,
+				DA469AE5C811CFAA20948E01 /* DebugReport.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
+		7337577437226678AB766BDE /* EarDigger */ = {
+			isa = PBXGroup;
+			children = (
+				4367BF4EEEBFF41E4602B771 /* App */,
+				501A88DA9011CA6E17EF1593 /* Debug */,
+				EF05E50C8EA8986215EB864B /* Net */,
+				BD0621318D1395B1AB63C703 /* Resources */,
+				F06D01C536E9D883E4A3E057 /* Support */,
+				A6DEF9A278061FF473EC33FA /* UI */,
+			);
+			path = EarDigger;
+			sourceTree = "<group>";
+		};
+		86287433BD1EF7F9B252756A = {
+			isa = PBXGroup;
+			children = (
+				0BF599CCA76124C17CF8273B /* Config */,
+				7337577437226678AB766BDE /* EarDigger */,
+				D86EA651244C6ED21DFA0E5F /* Packages */,
+				F8D6C0013D2818F6BAC7E6FF /* Products */,
+			);
+			indentWidth = 4;
+			sourceTree = "<group>";
+			usesTabs = 0;
+		};
+		A6DEF9A278061FF473EC33FA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				DFD5C6029BE1C00850BB49E5 /* CameraView.swift */,
+				F9CF9C4BB9022EF6777D9B43 /* Components.swift */,
+				044FC35959BA47948151E213 /* ConnectView.swift */,
+				0E719714F98EDDE321AE9119 /* NearbyRow.swift */,
+				F8D512BA9F8D9EC7603FF85E /* ShakeDetector.swift */,
+				F064C7BCCB37A6F32BE71D92 /* ViewerModel.swift */,
+				C445E8A719208E1ACBD94640 /* ViewerView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		BD0621318D1395B1AB63C703 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ABBAEACF0EEDA0669096368E /* Assets.xcassets */,
+				C8A34EF20B73770F3C211B00 /* EarDigger.entitlements */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D86EA651244C6ED21DFA0E5F /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				F6BE14064862C9343CB4C945 /* EarDiggerKit */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		EF05E50C8EA8986215EB864B /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				EE5F8754712A55E7B65A8A5E /* NearbyScanner.swift */,
+				B501D74052B6427995CE7372 /* NetworkLink.swift */,
+			);
+			path = Net;
+			sourceTree = "<group>";
+		};
+		F06D01C536E9D883E4A3E057 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				82476365058738EE6A985D86 /* AppInfo.swift */,
+				B9AACB0FC75E6D3FA31EF7D4 /* Snapshots.swift */,
+				A853554D683C5147AC0799DD /* Strings.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		F8D6C0013D2818F6BAC7E6FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				334404B19D089C4352E9A8E2 /* EarDigger.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		278CEC8123D6D721CC7CB72C /* EarDigger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F904C9A7C5844972F31B06CE /* Build configuration list for PBXNativeTarget "EarDigger" */;
+			buildPhases = (
+				FCE3A4AB38C6196CA4CA33C0 /* Sources */,
+				5EEAFC4E501DC414311AB21B /* Resources */,
+				DAD5F35CE3CDF4C2150B7164 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EarDigger;
+			packageProductDependencies = (
+				C989F9B00DFA8862F9CAC00B /* EarDiggerKit */,
+			);
+			productName = EarDigger;
+			productReference = 334404B19D089C4352E9A8E2 /* EarDigger.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		681D4344E78FA4693BF0A036 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					278CEC8123D6D721CC7CB72C = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F4E815E737450B3ABFD495E5 /* Build configuration list for PBXProject "EarDigger" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 86287433BD1EF7F9B252756A;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B1A055E02AFCA320E176204D /* XCLocalSwiftPackageReference "EarDiggerKit" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = F8D6C0013D2818F6BAC7E6FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				278CEC8123D6D721CC7CB72C /* EarDigger */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5EEAFC4E501DC414311AB21B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				676334AC3CF206A113072CA4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FCE3A4AB38C6196CA4CA33C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8845F31772741BBE1B5147A6 /* AppInfo.swift in Sources */,
+				C4784E4B6E6E2B9ECD9A6F37 /* AppModel.swift in Sources */,
+				5EE639104B293B25C5B7F8D7 /* CameraView.swift in Sources */,
+				4B892910454EA44B96904E62 /* Components.swift in Sources */,
+				F68B7A2275F7B5E4DBBFA6F3 /* ConnectView.swift in Sources */,
+				378A0C6166F7DA9223F377F2 /* CrashRecord.swift in Sources */,
+				5B74DAB955DF6EED7C31833F /* DebugReport.swift in Sources */,
+				0A54EFF59CAB7B61476E66AD /* EarDiggerApp.swift in Sources */,
+				191EC3A333BFE5785FE343EC /* NearbyRow.swift in Sources */,
+				B2CBD9098404C703A9F0627A /* NearbyScanner.swift in Sources */,
+				63C1B126A958CDA812CA1C71 /* NetworkLink.swift in Sources */,
+				9ACF4F4FA1B4FAB6274DE1FB /* ShakeDetector.swift in Sources */,
+				34DCD1C40066B82587DCDE4F /* Snapshots.swift in Sources */,
+				188272B0400298C8AE5C210F /* Strings.swift in Sources */,
+				34266FA08A6CE80A57AFBDAA /* ViewerModel.swift in Sources */,
+				FFC5B5E080933B8216F94C67 /* ViewerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		20F814D16287FD5058CB1B48 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DB345AA974D3E57752DC273 /* EarDigger.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = EarDigger/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		32BAD36E497724C685FCAFA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		B77B453219D3D0276EB1270F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		D15B7DE49891581917B1AB44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4DB345AA974D3E57752DC273 /* EarDigger.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = EarDigger/Resources/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F4E815E737450B3ABFD495E5 /* Build configuration list for PBXProject "EarDigger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				32BAD36E497724C685FCAFA0 /* Debug */,
+				B77B453219D3D0276EB1270F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F904C9A7C5844972F31B06CE /* Build configuration list for PBXNativeTarget "EarDigger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D15B7DE49891581917B1AB44 /* Debug */,
+				20F814D16287FD5058CB1B48 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		B1A055E02AFCA320E176204D /* XCLocalSwiftPackageReference "EarDiggerKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = EarDiggerKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C989F9B00DFA8862F9CAC00B /* EarDiggerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EarDiggerKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 681D4344E78FA4693BF0A036 /* Project object */;
+}
