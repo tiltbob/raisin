@@ -1,0 +1,162 @@
+# Builds the app and publishes it as a GitHub Release when a tag like v1.2.3 is pushed.
+# The release carries an .ipa for sideloading (AltStore, SideStore, Sideloadly, TrollStore)
+# and an AltStore/SideStore source that always points at the latest release:
+#   https://github.com/<owner>/raisin/releases/latest/download/altstore-source.json
+#
+# The .ipa is ad-hoc signed with the app's entitlements, not with an Apple certificate:
+# the sideloading tool re-signs it with the installer's own Apple ID.
+
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to release, e.g. 0.2.0. Creates the tag v<version> on this branch if it does not exist yet."
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: IPA and GitHub Release
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Version from tag
+        id: version
+        env:
+          EVENT: ${{ github.event_name }}
+          REF_NAME: ${{ github.ref_name }}
+          INPUT_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            TAG="v${INPUT_VERSION#v}"
+          else
+            TAG="$REF_NAME"
+          fi
+          NAME="${TAG#v}"
+          BASE="${NAME%%-*}"
+          IFS=. read -r MAJOR MINOR PATCH <<< "$BASE"
+          for n in "$MAJOR" "$MINOR" "$PATCH"; do
+            [[ "$n" =~ ^[0-9]+$ ]] || { echo "::error::version must look like 1.2.3 (got $TAG)"; exit 1; }
+          done
+          (( MINOR < 1000 && PATCH < 1000 )) || { echo "::error::minor and patch must be below 1000"; exit 1; }
+          CODE=$(( MAJOR * 1000000 + MINOR * 1000 + PATCH ))
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "name=$NAME" >> "$GITHUB_OUTPUT"
+          echo "base=$BASE" >> "$GITHUB_OUTPUT"
+          echo "code=$CODE" >> "$GITHUB_OUTPUT"
+          echo "Building $NAME (build $CODE, tag $TAG)"
+
+      - name: Create the tag (manual run)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          set -euo pipefail
+          if git fetch --quiet origin "refs/tags/$TAG:refs/tags/$TAG" 2> /dev/null; then
+            existing="$(git rev-parse "refs/tags/$TAG^{commit}")"
+            if [ "$existing" != "$GITHUB_SHA" ]; then
+              echo "::error::tag $TAG already exists at $existing, not at $GITHUB_SHA"
+              exit 1
+            fi
+            echo "Tag $TAG already points at this commit."
+          else
+            git tag "$TAG" "$GITHUB_SHA"
+            git push origin "refs/tags/$TAG"
+            echo "Created tag $TAG at $GITHUB_SHA."
+          fi
+
+      - name: EarDiggerKit tests
+        run: swift test --package-path EarDiggerKit
+
+      - name: Build the app
+        env:
+          BASE: ${{ steps.version.outputs.base }}
+          CODE: ${{ steps.version.outputs.code }}
+        run: |
+          xcodebuild -project EarDigger.xcodeproj -scheme EarDigger -configuration Release \
+            -destination 'generic/platform=iOS' -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO MARKETING_VERSION="$BASE" CURRENT_PROJECT_VERSION="$CODE" build
+
+      - name: Package the IPA and the source
+        id: artifact
+        env:
+          NAME: ${{ steps.version.outputs.name }}
+          BASE: ${{ steps.version.outputs.base }}
+          REPO: ${{ github.repository }}
+          TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          set -euo pipefail
+          APP=build/Build/Products/Release-iphoneos/EarDigger.app
+          test -d "$APP" || { echo "::error::app not built"; exit 1; }
+          rm -rf dist && mkdir -p dist/Payload
+          cp -R "$APP" dist/Payload/
+          # Ad-hoc signature carrying the entitlements, which sideloading tools read and keep.
+          codesign --force --sign - --timestamp=none --generate-entitlement-der \
+            --entitlements EarDigger/Resources/EarDigger.entitlements dist/Payload/EarDigger.app
+          codesign -d --entitlements - dist/Payload/EarDigger.app
+          IPA="eardigger-$NAME.ipa"
+          (cd dist && zip -qry "$IPA" Payload && rm -rf Payload)
+          (cd dist && shasum -a 256 "$IPA" > "$IPA.sha256")
+          cat dist/*.sha256
+          SIZE=$(stat -f%z "dist/$IPA")
+          BUNDLE_ID=$(/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' "$APP/Info.plist")
+          plist() { /usr/libexec/PlistBuddy -c "Print $1" EarDigger/Resources/Info.plist; }
+          jq -n \
+            --arg version "$BASE" \
+            --arg date "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+            --arg url "https://github.com/$REPO/releases/download/$TAG/$IPA" \
+            --arg icon "https://raw.githubusercontent.com/$REPO/$TAG/EarDigger/Resources/Assets.xcassets/AppIcon.appiconset/AppIcon.png" \
+            --arg site "https://github.com/$REPO" \
+            --arg bundle "$BUNDLE_ID" \
+            --arg bt "$(plist NSBluetoothAlwaysUsageDescription)" \
+            --arg ln "$(plist NSLocalNetworkUsageDescription)" \
+            --arg ph "$(plist NSPhotoLibraryAddUsageDescription)" \
+            --argjson size "$SIZE" \
+            '{
+              name: "EarDigger",
+              identifier: ($bundle + ".source"),
+              website: $site,
+              apps: [{
+                name: "EarDigger",
+                bundleIdentifier: $bundle,
+                developerName: "tiltbob",
+                subtitle: "Local-only viewer for Bebird Wi-Fi ear scopes",
+                localizedDescription: "Connects to a Bebird Wi-Fi ear scope on its own Wi-Fi, shows the live picture, reads the battery, sets the tip light and saves snapshots. No accounts, no analytics, no cloud.",
+                iconURL: $icon,
+                tintColor: "#6A1B9A",
+                category: "utilities",
+                versions: [{ version: $version, date: $date, downloadURL: $url, size: $size, minOSVersion: "16.0" }],
+                appPermissions: {
+                  entitlements: ["com.apple.developer.networking.HotspotConfiguration"],
+                  privacy: {
+                    NSBluetoothAlwaysUsageDescription: $bt,
+                    NSLocalNetworkUsageDescription: $ln,
+                    NSPhotoLibraryAddUsageDescription: $ph
+                  }
+                }
+              }],
+              news: []
+            }' > dist/altstore-source.json
+          cat dist/altstore-source.json
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          target_commitish: ${{ github.sha }}
+          name: EarDigger ${{ steps.version.outputs.name }}
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          files: |
+            dist/eardigger-*.ipa
+            dist/eardigger-*.ipa.sha256
+            dist/altstore-source.json

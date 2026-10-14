@@ -1,0 +1,13 @@
+// Copy this file to Local.xcconfig (next to it; git ignores it) to build onto your own
+// iPhone from Xcode.
+
+// Your team: Xcode › Settings › Accounts, or the Team ID on developer.apple.com.
+DEVELOPMENT_TEAM = ABCDE12345
+
+// With a free Apple ID, the bundle id must be one nobody else has registered:
+// PRODUCT_BUNDLE_IDENTIFIER = com.example.eardigger
+
+// If your account cannot sign the Hotspot Configuration capability, build without it.
+// The app then cannot join the scope's Wi-Fi by itself: join it in Settings › Wi-Fi and
+// tap "Joined its Wi-Fi in Settings? Find the camera".
+// CODE_SIGN_ENTITLEMENTS =
